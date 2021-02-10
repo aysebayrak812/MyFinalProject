@@ -59,6 +59,7 @@ namespace Core.DataAccess.EntityFramework
                 var apdatedEntity = context.Entry(entity);
                 apdatedEntity.State = EntityState.Modified;
                 context.SaveChanges();
+
             }
 
 
