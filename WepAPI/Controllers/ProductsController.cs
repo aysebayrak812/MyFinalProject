@@ -57,8 +57,6 @@ namespace WepAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
-            
-            
         }
 
 
