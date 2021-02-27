@@ -30,6 +30,7 @@ namespace Core.Aspects.Autofac.Validation
             {
                 ValidationTool.Validate(validator, entity);
             }
+            
         }
     }
 }
