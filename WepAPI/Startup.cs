@@ -1,5 +1,7 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.DependencyResolvers;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
@@ -37,7 +39,7 @@ namespace WepAPI
             services.AddControllers();
             //services.AddSingleton<IProductService,ProductManager>();//arka planda new yapan
             //services.AddSingleton<IProductDal, EfProductDal>();
-            services.AddSingleton < IHttpContextAccessor, HttpContextAccessor>();
+          //  services.AddSingleton < IHttpContextAccessor, HttpContextAccessor>();
           
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -55,6 +57,10 @@ namespace WepAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
+            services.AddDependencyResolvers(new ICoreModule[]{
+                new CoreModule()
+           });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
