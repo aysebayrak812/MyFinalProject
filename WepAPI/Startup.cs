@@ -40,7 +40,8 @@ namespace WepAPI
             services.AddControllers();
             //services.AddSingleton<IProductService,ProductManager>();//arka planda new yapan
             //services.AddSingleton<IProductDal, EfProductDal>();
-          //  services.AddSingleton < IHttpContextAccessor, HttpContextAccessor>();
+            //  services.AddSingleton < IHttpContextAccessor, HttpContextAccessor>();
+            services.AddCors(); //fronted iççn
           
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -71,6 +72,7 @@ namespace WepAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder=>builder.WithOrigins("http://localhost:4200" ).AllowAnyHeader());//frontend için burdan izin gelirse izin ver AllowAnyHeader=nasýlbir istek
 
             app.UseHttpsRedirection();
 
