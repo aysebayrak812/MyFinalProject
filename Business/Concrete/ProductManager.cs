@@ -30,7 +30,7 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
-        [SecuredOperation("product.add,admin")]
+       // [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
